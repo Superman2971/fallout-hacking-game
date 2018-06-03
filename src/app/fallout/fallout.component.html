@@ -1,0 +1,27 @@
+<div class="fallout">
+  <div *ngIf="newGame">
+    <div>Select the Hack Difficulty</div>
+    <div class="button" (click)="getWords(3)">VERY EASY</div>
+    <div class="button" (click)="getWords(4)">EASY</div>
+    <div class="button" (click)="getWords(5)">AVERAGE</div>
+    <div class="button" (click)="getWords(6)">HARD</div>
+    <div class="button" (click)="getWords(7)">VERY HARD</div>
+  </div>
+  <div *ngIf="!newGame">
+    <div>Attempts Made: (3 strikes and you are out!)</div>
+    <div class="row">
+      <img *ngIf="attempts > 0" src="../../assets/dead.png" alt="attempt made icon">
+      <img *ngIf="attempts > 1" src="../../assets/dead.png" alt="attempt made icon">
+      <img *ngIf="attempts > 2" src="../../assets/dead.png" alt="attempt made icon">
+    </div>
+    <h1 [innerHtml]="message"></h1>
+    <div *ngIf="message !== 'You WIN!' && message !== 'You LOSE!'">
+      <div class="button"
+        *ngFor="let option of gameOptions"
+        (click)="checkIfCorrect(option)"
+        [innerHtml]="option"
+      ></div>
+    </div>
+    <div class="button" (click)="goToNewGame()">NEW GAME</div>
+  </div>
+</div>

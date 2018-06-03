@@ -1,27 +1,34 @@
-# FalloutApp
+The popular video games Fallout 3 and Fallout: New Vegas have a computer "hacking" minigame where the player must correctly guess the correct password from a list of same-length words. Your challenge is to implement this game yourself.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
+The game operates similarly to the classic board game Mastermind. The player has only 4 guesses and on each incorrect guess the computer will indicate how many letter positions are correct.
 
-## Development server
+For example, if the password is MIND and the player guesses MEND, the game will indicate that 3 out of 4 positions are correct (M_ND). If the password is COMPUTE and the player guesses PLAYFUL, the game will report 0/7. While some of the letters match, they're in the wrong position.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Ask the player for a difficulty (very easy, easy, average, hard, very hard), then present the player with 5 to 15 words of the same length. The length can be 4 to 15 letters. More words and letters make for a harder puzzle. The player then has 4 guesses, and on each incorrect guess indicate the number of correct positions.
 
-## Code scaffolding
+Here's an example game:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+Difficulty (1-5)? 3
 
-## Build
+  SCORPION
+  FLOGGING
+  CROPPERS
+  MIGRAINE
+  FOOTNOTE
+  REFINERY
+  VAULTING
+  VICARAGE
+  PROTRACT
+  DESCENTS
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Guess (4 left)? migraine
+  0/8 correct
+Guess (3 left)? protract
+  2/8 correct
+Guess (2 left)? croppers
+  8/8 correct
+You win!
+```
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Your program should completely ignore case when making the position checks.
